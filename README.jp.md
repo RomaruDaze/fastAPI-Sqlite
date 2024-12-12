@@ -1,11 +1,12 @@
 [![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.md) [![jp](https://img.shields.io/badge/lang-jp-red.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.jp.md) [![cn](https://img.shields.io/badge/lang-cn-green.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.cn.md) [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.es.md)
 
 # fastAPI-Sqlite
-REST API with FastAPI-Sqlite
 
-# How to make
+FastAPI-Sqlite を使用した REST API
 
-**Step 1: Create Local Project**
+# 作成方法
+
+**ステップ 1：ローカルプロジェクトの作成**
 
 ```bash
 # Create project directory and initialize
@@ -18,7 +19,7 @@ npm install express pg dotenv cors
 npm install nodemon --save-dev
 ```
 
-**Step 2: Create Basic File Structure**
+**ステップ 2：基本的なファイル構造の作成**
 
 ```plaintext
 my-api/
@@ -33,14 +34,14 @@ my-api/
   └── package.json
 ```
 
-**Step 3: Set Up .gitignore**
+**ステップ 3：.gitignore の設定**
 
 ```gitignore
 node_modules
 .env
 ```
 
-**Step 4: Configure Database Connection (src/config/database.js)**
+**ステップ 4：データベース接続の設定 (src/config/database.js)**
 
 ```javascript:src/config/database.js
 const { Pool } = require('pg');
@@ -55,7 +56,7 @@ const pool = new Pool({
 module.exports = pool;
 ```
 
-**Step 5: Create Main Server File (src/index.js)**
+**ステップ 5：メインサーバーファイルの作成 (src/index.js)**
 
 ```javascript:src/index.js
 const express = require('express');
@@ -78,7 +79,7 @@ app.listen(PORT, () => {
 });
 ```
 
-**Step 6: Create API Routes (src/routes/api.js)**
+**ステップ 6：API ルートの作成 (src/routes/api.js)**
 
 ```javascript:src/routes/api.js
 const express = require('express');
@@ -112,7 +113,7 @@ router.post('/items', async (req, res) => {
 module.exports = router;
 ```
 
-**Step 7: Update package.json Scripts**
+**ステップ 7：package.json のスクリプトを更新**
 
 ```json:package.json
 {
@@ -123,20 +124,20 @@ module.exports = router;
 }
 ```
 
-**Step 8: Set Up Database on Render**
+**ステップ 8：Render でのデータベースのセットアップ**
 
-1. Go to render.com and create account
-2. Create new PostgreSQL database
-3. Copy the external database URL
-4. Create `.env` file:
+1. render.com にアクセスしてアカウントを作成
+2. 新しい PostgreSQL データベースを作成
+3. 外部データベース URL をコピー
+4. .env ファイルを作成：
 
 ```plaintext:.env
 DATABASE_URL=your_postgres_database_url
 PORT=3000
 ```
 
-**Step 9: Create Database Table**
-Use Render's database dashboard or a PostgreSQL client to run:
+**ステップ 9：データベーステーブルの作成**
+Render のデータベースダッシュボードまたは PostgreSQL クライアントを使用して実行：
 
 ```sql
 CREATE TABLE items (
@@ -147,21 +148,21 @@ CREATE TABLE items (
 );
 ```
 
-**Step 10: Deploy to Render**
+**ステップ 10：Render へのデプロイ**
 
-1. Push code to GitHub
-2. On Render:
-   - Create new "Web Service"
-   - Connect to your GitHub repo
-   - Configure build settings:
+1. GitHub にコードをプッシュ
+2. Render で：
+   - 新しい"Web Service"を作成
+   - あなたの GitHub リポジトリに接続
+   - ビルド設定を構成：
      ```plaintext
      Build Command: npm install
      Start Command: npm start
      ```
-   - Add environment variables from .env
-   - Deploy!
+   - .env から環境変数を追加
+   - デプロイ！
 
-**Testing Your API:**
+**API のテスト：**
 
 ```bash
 # Local testing
@@ -169,12 +170,12 @@ curl http://localhost:3000/api/items  # GET items
 curl -X POST -H "Content-Type: application/json" -d '{"name":"test","description":"test desc"}' http://localhost:3000/api/items  # POST item
 ```
 
-**Additional Tips:**
+**追加のヒント：**
 
-1. Add error handling
-2. Implement input validation
-3. Add authentication if needed
-4. Use an ORM like Sequelize or Prisma for more complex applications
-5. Add logging for production monitoring
+1. エラー処理の追加
+2. 入力バリデーションの実装
+3. 必要に応じて認証を追加
+4. より複雑なアプリケーションの場合は、Sequelize や Prisma などの ORM を使用
+5. 本番環境モニタリング用のログ記録を追加
 
-This is a basic setup that you can build upon. Let me know if you need clarification on any step or want to add more features!
+これは基本的なセットアップで、これを基に構築することができます。手順について不明な点がある場合や、機能を追加したい場合はお知らせください！

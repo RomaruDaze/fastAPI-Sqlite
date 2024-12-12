@@ -1,11 +1,12 @@
 [![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.md) [![jp](https://img.shields.io/badge/lang-jp-red.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.jp.md) [![cn](https://img.shields.io/badge/lang-cn-green.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.cn.md) [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.es.md)
 
 # fastAPI-Sqlite
-REST API with FastAPI-Sqlite
 
-# How to make
+使用 FastAPI-Sqlite 的 REST API
 
-**Step 1: Create Local Project**
+# 如何创建
+
+**步骤 1：创建本地项目**
 
 ```bash
 # Create project directory and initialize
@@ -18,7 +19,7 @@ npm install express pg dotenv cors
 npm install nodemon --save-dev
 ```
 
-**Step 2: Create Basic File Structure**
+**步骤 2：创建基本文件结构**
 
 ```plaintext
 my-api/
@@ -33,14 +34,14 @@ my-api/
   └── package.json
 ```
 
-**Step 3: Set Up .gitignore**
+**步骤 3：设置 .gitignore**
 
 ```gitignore
 node_modules
 .env
 ```
 
-**Step 4: Configure Database Connection (src/config/database.js)**
+**步骤 4：配置数据库连接 (src/config/database.js)**
 
 ```javascript:src/config/database.js
 const { Pool } = require('pg');
@@ -55,7 +56,7 @@ const pool = new Pool({
 module.exports = pool;
 ```
 
-**Step 5: Create Main Server File (src/index.js)**
+**步骤 5：创建主服务器文件 (src/index.js)**
 
 ```javascript:src/index.js
 const express = require('express');
@@ -78,7 +79,7 @@ app.listen(PORT, () => {
 });
 ```
 
-**Step 6: Create API Routes (src/routes/api.js)**
+**步骤 6：创建 API 路由 (src/routes/api.js)**
 
 ```javascript:src/routes/api.js
 const express = require('express');
@@ -112,7 +113,7 @@ router.post('/items', async (req, res) => {
 module.exports = router;
 ```
 
-**Step 7: Update package.json Scripts**
+**步骤 7：更新 package.json 脚本**
 
 ```json:package.json
 {
@@ -123,20 +124,20 @@ module.exports = router;
 }
 ```
 
-**Step 8: Set Up Database on Render**
+**步骤 8：在 Render 上设置数据库**
 
-1. Go to render.com and create account
-2. Create new PostgreSQL database
-3. Copy the external database URL
-4. Create `.env` file:
+1. 前往 render.com 并创建帐户
+2. 创建新的 PostgreSQL 数据库
+3. 复制外部数据库 URL
+4. 创建 .env 文件：
 
 ```plaintext:.env
 DATABASE_URL=your_postgres_database_url
 PORT=3000
 ```
 
-**Step 9: Create Database Table**
-Use Render's database dashboard or a PostgreSQL client to run:
+**步骤 9：创建数据库表**
+使用 Render 的数据库仪表板或 PostgreSQL 客户端运行：
 
 ```sql
 CREATE TABLE items (
@@ -147,21 +148,21 @@ CREATE TABLE items (
 );
 ```
 
-**Step 10: Deploy to Render**
+**步骤 10：部署到 Render**
 
-1. Push code to GitHub
-2. On Render:
-   - Create new "Web Service"
-   - Connect to your GitHub repo
-   - Configure build settings:
+1. 将代码推送到 GitHub
+2. 在 Render：
+   - 创建新的 "Web Service"
+   - 连接到您的 GitHub 仓库
+   - 配置构建设置：
      ```plaintext
      Build Command: npm install
      Start Command: npm start
      ```
-   - Add environment variables from .env
-   - Deploy!
+   - 从 .env 添加环境变量
+   - 部署！
 
-**Testing Your API:**
+**测试您的 API：**
 
 ```bash
 # Local testing
@@ -169,12 +170,12 @@ curl http://localhost:3000/api/items  # GET items
 curl -X POST -H "Content-Type: application/json" -d '{"name":"test","description":"test desc"}' http://localhost:3000/api/items  # POST item
 ```
 
-**Additional Tips:**
+**附加提示：**
 
-1. Add error handling
-2. Implement input validation
-3. Add authentication if needed
-4. Use an ORM like Sequelize or Prisma for more complex applications
-5. Add logging for production monitoring
+1. 添加错误处理
+2. 实现输入验证
+3. 根据需要添加身份验证
+4. 对于更复杂的应用程序，使用像 Sequelize 或 Prisma 这样的 ORM
+5. 添加日志记录以进行生产监控
 
-This is a basic setup that you can build upon. Let me know if you need clarification on any step or want to add more features!
+这是一个基本设置，您可以在此基础上进行构建。如果您需要对任何步骤进行说明或想要添加更多功能，请告诉我！

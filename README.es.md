@@ -1,11 +1,12 @@
 [![en](https://img.shields.io/badge/lang-en-blue.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.md) [![jp](https://img.shields.io/badge/lang-jp-red.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.jp.md) [![cn](https://img.shields.io/badge/lang-cn-green.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.cn.md) [![es](https://img.shields.io/badge/lang-es-yellow.svg)](https://github.com/RomaruDaze/fastAPI-Sqlite/blob/main/README.es.md)
 
 # fastAPI-Sqlite
-REST API with FastAPI-Sqlite
 
-# How to make
+API REST con FastAPI-Sqlite
 
-**Step 1: Create Local Project**
+# Cómo crear
+
+**Paso 1: Crear Proyecto Local**
 
 ```bash
 # Create project directory and initialize
@@ -18,7 +19,7 @@ npm install express pg dotenv cors
 npm install nodemon --save-dev
 ```
 
-**Step 2: Create Basic File Structure**
+**Paso 2: Crear Estructura Básica de Archivos**
 
 ```plaintext
 my-api/
@@ -33,14 +34,14 @@ my-api/
   └── package.json
 ```
 
-**Step 3: Set Up .gitignore**
+**Paso 3: Set Up .gitignore**
 
 ```gitignore
 node_modules
 .env
 ```
 
-**Step 4: Configure Database Connection (src/config/database.js)**
+**Paso 4: Configure Database Connection (src/config/database.js)**
 
 ```javascript:src/config/database.js
 const { Pool } = require('pg');
@@ -55,7 +56,7 @@ const pool = new Pool({
 module.exports = pool;
 ```
 
-**Step 5: Create Main Server File (src/index.js)**
+**Paso 5: Create Main Server File (src/index.js)**
 
 ```javascript:src/index.js
 const express = require('express');
@@ -78,7 +79,7 @@ app.listen(PORT, () => {
 });
 ```
 
-**Step 6: Create API Routes (src/routes/api.js)**
+**Paso 6: Create API Routes (src/routes/api.js)**
 
 ```javascript:src/routes/api.js
 const express = require('express');
@@ -112,7 +113,7 @@ router.post('/items', async (req, res) => {
 module.exports = router;
 ```
 
-**Step 7: Update package.json Scripts**
+**Paso 7: Update package.json Scripts**
 
 ```json:package.json
 {
@@ -123,7 +124,7 @@ module.exports = router;
 }
 ```
 
-**Step 8: Set Up Database on Render**
+**Paso 8: Set Up Database on Render**
 
 1. Go to render.com and create account
 2. Create new PostgreSQL database
@@ -135,7 +136,7 @@ DATABASE_URL=your_postgres_database_url
 PORT=3000
 ```
 
-**Step 9: Create Database Table**
+**Paso 9: Create Database Table**
 Use Render's database dashboard or a PostgreSQL client to run:
 
 ```sql
@@ -147,7 +148,7 @@ CREATE TABLE items (
 );
 ```
 
-**Step 10: Deploy to Render**
+**Paso 10: Deploy to Render**
 
 1. Push code to GitHub
 2. On Render:
@@ -169,12 +170,12 @@ curl http://localhost:3000/api/items  # GET items
 curl -X POST -H "Content-Type: application/json" -d '{"name":"test","description":"test desc"}' http://localhost:3000/api/items  # POST item
 ```
 
-**Additional Tips:**
+**Consejos Adicionales:**
 
-1. Add error handling
-2. Implement input validation
-3. Add authentication if needed
-4. Use an ORM like Sequelize or Prisma for more complex applications
-5. Add logging for production monitoring
+1. Agregar manejo de errores
+2. Implementar validación de entrada
+3. Agregar autenticación si es necesario
+4. Usar un ORM como Sequelize o Prisma para aplicaciones más complejas
+5. Agregar registro para monitoreo de producción
 
-This is a basic setup that you can build upon. Let me know if you need clarification on any step or want to add more features!
+¡Esta es una configuración básica sobre la cual puede construir. Háganme saber si necesitan aclaración sobre algún paso o desean agregar más funciones!
